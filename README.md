@@ -381,9 +381,30 @@ graph LR
 - **Per-agent logs** in `logs/agents/` directory
 
 ### 🛡️ Security
-- **Prompt injection protection** using delimiters
-- **Input sanitization** for safe processing
-- **No data persistence** - API keys never stored
+
+VERA implements multiple layers of security protection:
+
+#### Prompt Injection Protection
+- **Input delimiters**: User content wrapped in `<<<USER_INPUT_START>>>` and `<<<USER_INPUT_END>>>` markers
+- **Explicit agent instructions**: Agents instructed to IGNORE any commands within user input
+- **Role enforcement**: Agents cannot be redirected from their core responsibilities
+- **Attack detection**: Recognizes and blocks common injection patterns ("ignore previous instructions", "you are now", etc.)
+
+#### XSS (Cross-Site Scripting) Prevention
+- **Safe markdown rendering**: Reports displayed without `unsafe_allow_html`
+- **Automatic HTML escaping**: Streamlit sanitizes all user-generated content
+- **No script execution**: Agent outputs cannot inject JavaScript into the UI
+
+#### API Key Security
+- **User-provided keys**: No hardcoded credentials in deployment
+- **Session-only storage**: API keys stored in browser session memory only
+- **No persistence**: Keys never saved to disk or database
+- **No logging**: API keys excluded from all log files
+
+#### Input Validation
+- **Type checking**: All inputs validated before processing
+- **Length limits**: Protection against resource exhaustion
+- **Character sanitization**: Special characters handled safely
 
 ### 🌍 Multilingual Support
 - **Polish** and **English** interface
