@@ -39,7 +39,7 @@ import logging
 
 # Google ADK imports - Core framework for multi-agent systems
 from google.adk.sessions import InMemorySessionService
-from google.genai import types
+from google.genai import types as genai_types
 
 # VERA agent imports - Each agent has a specific role in the analysis pipeline
 from vera.agents.researcher import get_researcher_agent
