@@ -390,7 +390,13 @@ async def run_investigation(text: str, key: str, lang: str):
         # Final cleanup
         total_duration = time.time() - investigation_start
         status_container.markdown("<div style='text-align: center;'>✅ <b>Investigation Complete</b></div>", unsafe_allow_html=True)
-        report_container.markdown(full_response)
+        
+        # Display final report with unsafe_allow_html for better rendering
+        report_container.markdown(full_response, unsafe_allow_html=True)
+        
+        # Debug: Log report length
+        logger.info(f"Final report length: {len(full_response)} characters")
+        
         status_container.success("✅ Investigation complete!")
         
         # Log investigation summary
