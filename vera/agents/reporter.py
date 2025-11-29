@@ -42,9 +42,27 @@ def get_reporter_agent(language: str = "English") -> Agent:
     # Language-specific instructions for report generation
     # Ensures report is in user's preferred language
     if language == "Polski":
-        lang_instruction = "Write the entire report in Polish language."
+        lang_instruction = """CRITICAL LANGUAGE REQUIREMENT: 
+Write the ENTIRE report in POLISH language. This includes:
+- ALL section headers (e.g., "# Raport Analizy VERA", "## 1. Podsumowanie Wykonawcze")
+- ALL subsection headers
+- ALL body text
+- ALL bullet points
+- ALL labels (e.g., "Poziom Dezinformacji:", "Źródła:")
+- Everything must be in Polish - NO English words except proper nouns
+
+Example headers in Polish:
+# Raport Analizy VERA
+## 1. Podsumowanie Wykonawcze
+## 2. Ocena Ilościowa
+## 3. Weryfikacja Faktów
+## 4. Kontekst i Tło
+## 5. Analiza Manipulacji
+## 6. Przegląd Krytyczny
+## 7. Wnioski"""
     else:
-        lang_instruction = "Write the entire report in English language."
+        lang_instruction = """LANGUAGE REQUIREMENT: 
+Write the entire report in ENGLISH language. All headers, text, and labels must be in English."""
     
     return Agent(
         name="ReporterAgent",
@@ -66,51 +84,47 @@ You will receive:
 - Critique (from CriticAgent)
 - Scores (from ScoringAgent)
 
-Your task is to synthesize ALL findings into a structured markdown report with these sections:
+Your task is to synthesize ALL findings into a CONCISE, SCANNABLE markdown report with these sections:
 
 # VERA Analysis Report
 
 ## 1. Executive Summary
-Brief overview (2-3 sentences) of the main findings and verdict.
+**Max 3 sentences (50 words).** Brief verdict: Is this content credible, questionable, or false?
 
 ## 2. Quantitative Assessment
-Display the three scores from ScoringAgent:
-- Disinformation Level: X/10
-- Manipulation Level: X/10
-- Analysis Confidence: X/10
+Display the three scores from ScoringAgent (exact format):
+- **Disinformation Level**: X/10
+- **Manipulation Level**: X/10
+- **Analysis Confidence**: X/10
 
 ## 3. Factual Verification
-Summarize Researcher's findings:
-- Key claims verified or debunked
-- Source citations
-- Factual accuracy assessment
+**Max 5 key claims.** For each claim:
+- **Claim**: [brief statement]
+- **Verdict**: True/False/Unverified
+- **Source**: [1-2 sources max]
 
 ## 4. Context & Background
-Summarize Librarian's context:
-- Definitions of key terms
-- Historical background
-- Relevant encyclopedic information
+**Max 3 bullet points (50 words total).** Key definitions or historical context from Librarian.
 
 ## 5. Manipulation Analysis
-Summarize Analyst's findings:
-- Propaganda techniques identified
-- Emotional appeals and loaded language
-- Logical fallacies detected
+**Max 5 techniques.** For each:
+- **Technique**: [name]
+- **Example**: [one specific quote from text]
 
 ## 6. Critical Review
-Summarize Critic's concerns:
-- Potential biases in the analysis
-- Alternative interpretations
-- Gaps or limitations
+**Max 3 bullet points (50 words total).** Key concerns from Critic about potential biases or gaps.
 
 ## 7. Conclusion
-Final verdict based on all evidence. Be clear and actionable.
+**Max 2 paragraphs (100 words total).** Final verdict with actionable recommendation.
 
-**IMPORTANT**: 
-- Use markdown formatting (headers, lists, bold)
-- Cite specific examples from the text
-- Be objective and evidence-based
-- Keep it concise but comprehensive
+---
+
+**CRITICAL FORMATTING RULES:**
+- Use markdown: headers (##), bold (**text**), bullet points (-)
+- Be CONCISE - respect word limits strictly
+- Use specific quotes/examples, not generalizations
+- Make it SCANNABLE - busy readers should grasp it in 30 seconds
+- NO preamble, NO meta-commentary, ONLY the report
 """,
         output_key="final_report",
     )
