@@ -484,20 +484,26 @@ ls -la logs/
 
 ---
 
-## 💻 Usage
+## � Usage
 
-### Basic Analysis
+### Running VERA
 
-1. **Launch VERA**
+1. **Start the application:**
    ```bash
    streamlit run vera/main.py
    ```
 
-2. **Enter API Key** in the sidebar. For security, the API key is stored only in your browser's session memory and is never saved to disk or database. It's used temporarily for the current analysis and must be re-entered after page refresh.
+2. **Open browser** at `http://localhost:8501`
 
-3. **Select Language** (English or Polski)
+3. **Enter API Key** in the sidebar
+   - Get your free API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
+   - The key is stored only in your browser session (never saved to disk)
 
-4. **Paste Text or URL** to analyze
+4. **Select language** (English or Polski)
+
+5. **Submit text or URL** for analysis
+
+6. **Paste Text or URL** to analyze
    - **Text**: Paste any text content directly (recommended)
    - **URL** (BETA): Paste article URL (e.g., `https://www.bbc.com/news/article-id`)
    - System automatically detects URLs and extracts content
