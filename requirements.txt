@@ -1,0 +1,8 @@
+google-adk
+streamlit>=1.35.0
+google-api-python-client
+python-dotenv
+google-generativeai
+wikipedia
+requests
+beautifulsoup4
