@@ -383,7 +383,6 @@ graph LR
 ### 🛡️ Security
 - **Prompt injection protection** using delimiters
 - **Input sanitization** for safe processing
-- **Secret management** for API keys (Cloud deployment)
 - **No data persistence** - API keys never stored
 
 ### 🌍 Multilingual Support
@@ -427,7 +426,7 @@ graph LR
 
 ```bash
 # Clone repository
-git clone https://github.com/your-username/vera.git
+git clone https://github.com/migdaluk/vera.git
 cd vera
 
 # Create virtual environment
@@ -437,12 +436,11 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 # Install dependencies
 pip install -r requirements.txt
 
-# Set API key
-export GOOGLE_API_KEY="your-api-key-here"
-
 # Run application
 streamlit run vera/main.py
 ```
+
+**Note:** You'll enter your Google AI Studio API key in the Streamlit sidebar when the app starts.
 
 Open your browser at `http://localhost:8501`
 
