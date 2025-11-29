@@ -67,6 +67,7 @@ ENV STREAMLIT_SERVER_PORT=8080
 ENV STREAMLIT_SERVER_ADDRESS=0.0.0.0
 ENV STREAMLIT_SERVER_HEADLESS=true
 ENV STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
+ENV PYTHONPATH=/app
 
 # Run Streamlit
 CMD ["streamlit", "run", "vera/main.py", "--server.port=8080", "--server.address=0.0.0.0"]
@@ -161,45 +162,23 @@ gcloud builds submit --tag europe-central2-docker.pkg.dev/$PROJECT_ID/vera/vera-
 #### 3.3 Deploy to Cloud Run
 
 ```bash
-# Deploy with environment variables
+# Deploy to Cloud Run (no API key needed - users provide their own)
 gcloud run deploy vera \
   --image gcr.io/$PROJECT_ID/vera-app \
   --platform managed \
   --region europe-central2 \
   --allow-unauthenticated \
-  --set-env-vars GOOGLE_API_KEY="your-api-key-here" \
   --memory 2Gi \
   --cpu 2 \
   --timeout 900 \
   --max-instances 10 \
-  --min-instances 1
+  --min-instances 0 \
+  --port 8080
 
-# Note: Use --min-instances 1 to avoid cold starts (costs more)
-```
-
-#### 3.4 Using Secret Manager (Recommended for API Keys)
-
-```bash
-# Create secret
-echo -n "your-api-key-here" | gcloud secrets create google-api-key --data-file=-
-
-# Grant Cloud Run access to secret
-gcloud secrets add-iam-policy-binding google-api-key \
-  --member="serviceAccount:PROJECT_NUMBER-compute@developer.gserviceaccount.com" \
-  --role="roles/secretmanager.secretAccessor"
-
-# Deploy with secret
-gcloud run deploy vera \
-  --image gcr.io/$PROJECT_ID/vera-app \
-  --platform managed \
-  --region europe-central2 \
-  --allow-unauthenticated \
-  --set-secrets GOOGLE_API_KEY=google-api-key:latest \
-  --memory 2Gi \
-  --cpu 2 \
-  --timeout 900 \
-  --max-instances 10 \
-  --min-instances 1
+# Note: 
+# - No API key needed in deployment (users provide via UI)
+# - min-instances=0 saves costs (cold starts acceptable)
+# - Increase min-instances to 1 for faster response (costs more)
 ```
 
 ### Step 4: Access Your Application
@@ -385,17 +364,16 @@ Access logs in Cloud Console:
 
 1. **Use min-instances=0** for development
 2. **Set max-instances** to prevent runaway costs
-3. **Use Secret Manager** instead of environment variables
-4. **Enable Cloud CDN** for static assets
-5. **Use Artifact Registry** (cheaper than Container Registry)
+3. **Enable Cloud CDN** for static assets
+4. **Use Artifact Registry** (cheaper than Container Registry)
 
 ---
 
 ## Security Best Practices
 
-### 1. Use Secret Manager
+### 1. API Key Security
 
-Never hardcode API keys in code or Dockerfiles.
+VERA does not store API keys in the deployment. Users provide their own Google AI Studio API keys via the Streamlit UI sidebar. Keys are stored only in browser session memory and never persisted.
 
 ### 2. Enable Authentication
 
