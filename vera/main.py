@@ -391,8 +391,9 @@ async def run_investigation(text: str, key: str, lang: str):
         total_duration = time.time() - investigation_start
         status_container.markdown("<div style='text-align: center;'>✅ <b>Investigation Complete</b></div>", unsafe_allow_html=True)
         
-        # Display final report with unsafe_allow_html for better rendering
-        report_container.markdown(full_response, unsafe_allow_html=True)
+        # Display final report - NO unsafe_allow_html to prevent XSS attacks
+        # Streamlit's default markdown rendering is safe and escapes HTML
+        report_container.markdown(full_response)
         
         # Debug: Log report length
         logger.info(f"Final report length: {len(full_response)} characters")
