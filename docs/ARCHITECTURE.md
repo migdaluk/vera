@@ -149,7 +149,46 @@ graph TB
 
 ## Sequential Workflow
 
-VERA uses **manual orchestration** (not SequentialAgent wrapper) for full control:
+### ADK Pattern Compliance
+
+VERA implements the **Sequential Agents** pattern from Google ADK, satisfying the multi-agent system requirement for the competition.
+
+**Pattern Characteristics:**
+- ✅ Agents execute in **strict sequential order** (one after another)
+- ✅ Each agent **completes fully** before the next starts
+- ✅ **Shared context** via `InMemorySessionService`
+- ✅ **No parallel execution** - deterministic, reproducible results
+
+### Implementation Approach: Manual Orchestration
+
+VERA uses **manual orchestration** (for loop with `Runner`) instead of ADK's `SequentialAgent` wrapper.
+
+**Why Manual Orchestration?**
+
+#### 1. Tool Conflict Prevention
+- **Researcher** uses `google_search` (built-in ADK tool)
+- **Librarian** uses `search_wikipedia` (custom tool)
+- Using both tools in a `SequentialAgent` can cause conflicts
+- Manual orchestration allows **clean tool separation** per agent
+
+#### 2. Fine-Grained Control
+- **Custom input** for each agent (e.g., Librarian gets specific prompt)
+- **Precise error handling** per agent with specific recovery strategies
+- **Agent-specific timeouts** (300s per agent vs global timeout)
+- **Individual performance tracking** for optimization
+
+#### 3. Observability & Debugging
+- **Per-agent logging** with structured metadata (session_id, agent_name, duration)
+- **Real-time UI updates** showing which agent is currently active
+- **Detailed timing metrics** for performance analysis
+- **Easier debugging** - can inspect state between agents
+
+#### 4. Session Management
+- **Explicit control** over session context sharing
+- Each agent sees **previous agents' outputs** via shared session
+- Easier to **inspect session state** between agents for debugging
+
+### Execution Flow
 
 ```
 1. User Input (Text or URL)
@@ -171,7 +210,31 @@ VERA uses **manual orchestration** (not SequentialAgent wrapper) for full contro
 9. Display Report to User
 ```
 
-**Key Design Decision:** Sequential execution ensures each agent builds on previous findings, creating emergent intelligence.
+**Key Design Decision:** Sequential execution ensures each agent builds on previous findings, creating **emergent intelligence** that exceeds what any single agent could achieve.
+
+### Code Implementation
+
+Located in `vera/main.py` (lines 303-355):
+
+```python
+# Sequential execution loop
+for agent_name, agent_obj in agents_sequence:
+    runner = Runner(
+        agent=agent_obj,
+        app_name="vera_app",
+        session_service=session_service  # Shared context
+    )
+    
+    # Execute agent and stream results
+    async for event in runner.run_stream(
+        session_id=session_id,
+        new_message=agent_input
+    ):
+        # Process streaming output
+        ...
+```
+
+**Pattern Compliance:** This manual approach provides the **same sequential execution semantics** as `SequentialAgent` but with greater control and reliability for VERA's specific use case (multiple tools, complex error handling, real-time UI).
 
 ---
 
