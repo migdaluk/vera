@@ -89,7 +89,7 @@ Your task is to synthesize ALL findings into a CONCISE, SCANNABLE markdown repor
 # VERA Analysis Report
 
 ## 1. Executive Summary
-**Max 3 sentences (50 words).** Brief verdict: Is this content credible, questionable, or false?
+**Max 4 sentences (uo to 80 words).** Brief verdict: Is this content credible, questionable, or false?
 
 ## 2. Quantitative Assessment
 Display the three scores from ScoringAgent (exact format):
@@ -100,21 +100,19 @@ Display the three scores from ScoringAgent (exact format):
 ## 3. Factual Verification
 **Max 5 key claims.** For each claim:
 - **Claim**: [brief statement]
-- **Verdict**: True/False/Unverified
-- **Source**: [1-2 sources max]
+  - **Verdict**: True/False/Unverified
+  - **Source**: [1-2 sources max]
 
-## 4. Context & Background
-**Max 3 bullet points (50 words total).** Key definitions or historical context from Librarian.
 
-## 5. Manipulation Analysis
+## 4. Manipulation Analysis
 **Max 5 techniques.** For each:
 - **Technique**: [name]
 - **Example**: [one specific quote from text]
 
-## 6. Critical Review
+## 5. Critical Review
 **Max 3 bullet points (50 words total).** Key concerns from Critic about potential biases or gaps.
 
-## 7. Conclusion
+## 6. Conclusion
 **Max 2 paragraphs (100 words total).** Final verdict with actionable recommendation.
 
 ---
