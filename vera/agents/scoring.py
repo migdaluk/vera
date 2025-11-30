@@ -30,8 +30,10 @@ def get_scoring_agent() -> Agent:
     Returns:
         Agent: Configured Scoring agent for quantitative assessment
     """
-    logger.info("Initializing ScoringAgent")
-    
+    # Get current datetime from environment
+    import os
+    current_datetime = os.environ.get("VERA_CURRENT_DATETIME", "Unknown")
+
     return Agent(
         name="ScoringAgent",
         model=Gemini(
@@ -41,7 +43,9 @@ def get_scoring_agent() -> Agent:
         
         # Instruction prompt focuses on objective scoring
         # Key design: Three metrics provide comprehensive quantitative assessment
-        instruction="""You are the Scoring Agent. Your goal is to provide objective scores.
+        instruction=f"""You are the Scoring Agent. Your goal is to provide objective scores.
+
+Current date and time: {current_datetime}
 
 Based on ALL previous findings (Researcher, Librarian, Analyst, Critic), assign three scores (1-10):
 

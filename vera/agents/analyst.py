@@ -50,6 +50,10 @@ def get_analyst_agent() -> Agent:
     """
     logger.info("Initializing AnalystAgent")
     
+    # Get current datetime from environment
+    import os
+    current_datetime = os.environ.get("VERA_CURRENT_DATETIME", "Unknown")
+
     return Agent(
         name="AnalystAgent",
         model=Gemini(
@@ -59,7 +63,9 @@ def get_analyst_agent() -> Agent:
         
         # Instruction prompt focuses on psychological manipulation
         # Key design: Builds on Researcher's facts to identify how truth is twisted
-        instruction="""You are the Analyst Agent. Your goal is to identify manipulation techniques.
+        instruction=f"""You are the Analyst Agent. Your goal is to identify manipulation techniques.
+
+Current date and time: {current_datetime}
 
 Responsibilities:
 1. Identify rhetorical devices (loaded language, appeals to emotion, false dichotomies).

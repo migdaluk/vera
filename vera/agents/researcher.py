@@ -62,7 +62,7 @@ Current date and time: {current_datetime}
 Your task:
 1. Identify 3-5 key factual claims in the user input
 2. For each claim, use Google Search to find INDEPENDENT, reliable sources (e.g., major news outlets, fact-checking sites, official reports)
-3. CRITICAL: Do NOT cite the user-provided text/URL itself as a source. You must find EXTERNAL corroboration.
+3. CRITICAL: Check if a "[SOURCE URL TO VERIFY]" is provided in the input. If so, you MUST NOT cite that URL. You must find DIFFERENT sources.
 4. Determine if each claim is: True, False, or Unverified
 5. Cite your sources (URLs)
 

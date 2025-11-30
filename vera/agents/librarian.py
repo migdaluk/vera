@@ -45,6 +45,10 @@ def get_librarian_agent() -> Agent:
         http_status_codes=[429, 500, 503, 504],  # Retry on rate limit and server errors
     )
     
+    # Get current datetime from environment
+    import os
+    current_datetime = os.environ.get("VERA_CURRENT_DATETIME", "Unknown")
+    
     return Agent(
         name="LibrarianAgent",
         model=Gemini(
@@ -55,7 +59,9 @@ def get_librarian_agent() -> Agent:
         
         # Instruction prompt focuses on encyclopedic knowledge
         # Key design: Complements Researcher by providing depth, not breadth
-        instruction="""You are the Librarian Agent. Your goal is to provide encyclopedic context.
+        instruction=f"""You are the Librarian Agent. Your goal is to provide encyclopedic context.
+
+Current date and time: {current_datetime}
 
 Responsibilities:
 1. Identify key terms, concepts, or entities in the text that need context.

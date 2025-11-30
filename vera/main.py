@@ -117,7 +117,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### ⚠️ Disclaimer")
     st.warning(
-        "**VERA is a research prototype.** Results may contain errors or AI hallucinations. "
+        "**VERA is a research prototype.** "
         "**DO NOT** use as sole basis for important decisions. Always verify critical information "
         "through authoritative sources. Use at your own risk."
     )
@@ -190,7 +190,7 @@ def get_workflow_html(active_agent: str = "Researcher") -> str:
     """
 
 
-async def run_investigation(text: str, key: str, lang: str):
+async def run_investigation(text: str, key: str, lang: str, source_url: str = None):
     """Runs the VERA agent system."""
     investigation_start = time.time()
     
@@ -210,7 +210,8 @@ async def run_investigation(text: str, key: str, lang: str):
         "session_id": session_id,
         "language": lang,
         "text_length": len(text),
-        "timestamp": current_time
+        "timestamp": current_time,
+        "source_url": source_url
     })
     
     # Initialize Agents
@@ -253,9 +254,15 @@ async def run_investigation(text: str, key: str, lang: str):
         "Polski": f"[AKTUALNA DATA/CZAS: {current_time}] [JĘZYK: Polski] Odpowiedz w języku polskim. "
     }
     
+    # Source exclusion instruction
+    source_exclusion = ""
+    if source_url:
+        source_exclusion = f"\n[SOURCE URL TO VERIFY: {source_url}] (DO NOT CITE THIS URL AS A VERIFICATION SOURCE - FIND INDEPENDENT SOURCES)\n"
+    
     # Wrap user input
     prefixed_text = (
         language_instruction.get(lang, "") + 
+        source_exclusion +
         "\n<<<USER_INPUT_START>>>\n" + 
         text + 
         "\n<<<USER_INPUT_END>>>"
@@ -517,4 +524,5 @@ if st.button("🔍 Analyze & Verify"):
     st.session_state.session_id = str(uuid.uuid4())
     
     # Run investigation with processed text
-    asyncio.run(run_investigation(processed_text, api_key, language))
+    source_url = input_text.strip() if is_url(input_text.strip()) else None
+    asyncio.run(run_investigation(processed_text, api_key, language, source_url=source_url))
