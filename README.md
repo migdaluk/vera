@@ -718,9 +718,9 @@ VERA is **open source** under the [CC-BY-SA 4.0 License](https://creativecommons
 
 ### Author
 
-Created by **Łukasz Migda** as part of Google's ADK training program.
+Created by **Łukasz Migda** as part of Google's ADK Capstone Competition.
 
-Author LinkedIn profile: https://www.linkedin.com/in/migda/
+📧 Contact: migdaluk@gmail.com
 ---
 
 ## 🤝 Contributing
