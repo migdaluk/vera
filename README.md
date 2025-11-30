@@ -212,104 +212,15 @@ Markdown Report (displayed to user)
 
 ### System Overview
 
-```mermaid
-graph TB
-    User[👤 User] -->|Submits Text| UI[🖥️ Streamlit UI]
-    UI -->|Initiates| Main[⚙️ Main Orchestrator]
-    
-    Main -->|Sequential Execution| Researcher[🔍 Researcher Agent]
-    Researcher -->|Google Search| GS[Google Search API]
-    
-    Main --> Librarian[📚 Librarian Agent]
-    Librarian -->|Wikipedia API| Wiki[Wikipedia]
-    
-    Main --> Analyst[🧐 Analyst Agent]
-    Main --> Critic[🛑 Critic Agent]
-    Main --> Scoring[📊 Scoring Agent]
-    Main --> Reporter[📝 Reporter Agent]
-    
-    Reporter -->|Final Report| UI
-    
-    Main -.->|Logs| Logs[(📋 Logs)]
-    Main -.->|Session| Session[(💾 Session Memory)]
-    
-    style Researcher fill:#e1f5ff
-    style Librarian fill:#fff4e1
-    style Analyst fill:#ffe1f5
-    style Critic fill:#ffe1e1
-    style Scoring fill:#e1ffe1
-    style Reporter fill:#f5e1ff
-```
+![VERA System Architecture](docs/images/system_architecture.png)
 
 ### Agent Workflow
 
-```mermaid
-sequenceDiagram
-    participant User
-    participant UI as Streamlit UI
-    participant Main as Main Orchestrator
-    participant R as Researcher
-    participant L as Librarian
-    participant A as Analyst
-    participant C as Critic
-    participant S as Scoring
-    participant Rep as Reporter
-    
-    User->>UI: Submit text for analysis
-    UI->>Main: Initialize investigation
-    
-    Main->>R: Verify factual claims
-    R->>R: Google Search
-    R-->>Main: Research findings
-    
-    Main->>L: Find context/definitions
-    L->>L: Wikipedia search
-    L-->>Main: Librarian report
-    
-    Main->>A: Analyze manipulation
-    A->>A: Detect techniques
-    A-->>Main: Analysis report
-    
-    Main->>C: Review findings
-    C->>C: Check for bias
-    C-->>Main: Critique
-    
-    Main->>S: Calculate scores
-    S->>S: Assign metrics
-    S-->>Main: Scores (1-10)
-    
-    Main->>Rep: Generate final report
-    Rep->>Rep: Synthesize all findings
-    Rep-->>Main: Markdown report
-    
-    Main-->>UI: Display report
-    UI-->>User: Show results
-```
+![VERA Workflow Sequence](docs/images/workflow_sequence.png)
 
 ### Data Flow
 
-```mermaid
-graph LR
-    Input[User Input Text] --> Session[Session Memory]
-    
-    Session --> R[Researcher Output]
-    Session --> L[Librarian Output]
-    Session --> A[Analyst Output]
-    Session --> C[Critic Output]
-    Session --> S[Scoring Output]
-    
-    R --> Reporter[Reporter Agent]
-    L --> Reporter
-    A --> Reporter
-    C --> Reporter
-    S --> Reporter
-    
-    Reporter --> Report[Final Report]
-    
-    style Session fill:#f0f0f0
-    style Reporter fill:#f5e1ff
-    style Report fill:#e1ffe1
-```
+![VERA Data Flow](docs/images/data_flow.png)
 
 ---
 
