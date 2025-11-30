@@ -131,11 +131,10 @@ input_text = st.text_area(
     help="📝 Paste text directly OR 🌐 paste article URL (BETA feature - may not work with all websites)"
 )
 
-def get_workflow_html(active_agent: str = "Coordinator") -> str:
+def get_workflow_html(active_agent: str = "Researcher") -> str:
     """Generate minimal HTML for workflow visualization."""
     
     agents = {
-        "Coordinator": {"icon": "🧠", "label": "Coordinator"},
         "Researcher": {"icon": "🔍", "label": "Researcher"},
         "Librarian": {"icon": "📚", "label": "Librarian"},
         "Analyst": {"icon": "🧐", "label": "Analyst"},
@@ -271,7 +270,7 @@ async def run_investigation(text: str, key: str, lang: str):
     
     # Visualization
     graph_placeholder = st.empty()
-    graph_placeholder.markdown(get_workflow_html("Coordinator"), unsafe_allow_html=True)
+    graph_placeholder.markdown(get_workflow_html("Researcher"), unsafe_allow_html=True)
     
     # Status message
     status_container = st.empty()
