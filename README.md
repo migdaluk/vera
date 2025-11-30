@@ -458,20 +458,15 @@ ls -la logs/
 
 ### Example Inputs
 
-#### Text Analysis
+**Text Examples:**
 ```
-Breaking: New study shows that drinking 10 cups of coffee daily 
-cures all diseases. Scientists are shocked! Big Pharma doesn't 
-want you to know this secret.
+"Breaking: Scientists discover cure for aging, pharmaceutical companies hiding the truth!"
 ```
 
-#### URL Analysis (BETA)
 ```
-https://en.wikipedia.org/wiki/Propaganda
-https://www.bbc.com/news/articles/cly2jxz3x3xo
-https://ria.ru/20251129/orban-2058603954.html
-https://wiadomosci.gazeta.pl/polska/7,198072,32432328,tusk-mowi-jezykiem-architektow-brexitu-opinia.html
+"New study shows coffee causes cancer - mainstream media won't report this!"
 ```
+
 
 **Supported URL types:**
 - ✅ News articles (BBC, CNN, RIA.ru, Gazeta.pl)
