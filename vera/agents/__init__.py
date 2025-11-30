@@ -1,4 +1,3 @@
-from .coordinator import get_coordinator_agent
 from .researcher import get_researcher_agent
 from .analyst import get_analyst_agent
 from .critic import get_critic_agent
