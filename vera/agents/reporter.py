@@ -58,7 +58,7 @@ MUSISZ napisać CAŁY raport w języku POLSKIM. To oznacza:
 2. WSZYSTKIE podsekcje w POLSKIM:
    - "**Twierdzenie**:" (NIE "**Claim**:")
    - "**Werdykt**:" (NIE "**Verdict**:")
-   - "**Źródło**:" (NIE "**Source**:")
+   - "**Źródło**:" (NIE "**Source**:" - TUTAJ WKLEJ URL ZE ZNALEZISK RESEARCHERA)
    - "**Technika**:" (NIE "**Technique**:")
    - "**Przykład**:" (NIE "**Example**:")
 
@@ -119,7 +119,7 @@ Display the three scores from ScoringAgent (exact format):
 **Max 5 key claims.** For each claim:
 - **Claim**: [brief statement]
   - **Verdict**: True/False/Unverified
-  - **Source**: [1-2 sources max]
+  - **Source**: [EXTRACT URL from Researcher's findings - REQUIRED]
 
 
 ## 4. Manipulation Analysis
