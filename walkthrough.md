@@ -1,41 +1,46 @@
 # VERA - Walkthrough
 
-## 1. Installation
+## 1. System Overview
 
-First, ensure you have Python 3.13 installed. Then, install the required dependencies:
+VERA (Virtual Evidence & Reality Assessment) is a 6-agent system designed to detect disinformation and manipulation.
+
+### Agents
+1. **Researcher**: Fact-checks claims using Google Search (Grounding API).
+2. **Librarian**: Provides context using Wikipedia.
+3. **Analyst**: Detects manipulation techniques (pure LLM).
+4. **Critic**: Reviews findings for bias and errors (pure LLM).
+5. **Scoring**: Calculates objective scores (1-10) (pure LLM).
+6. **Reporter**: Synthesizes the final report in English or Polish.
+
+## 2. Installation
+
+Ensure you have Python 3.11+ installed.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-> [!NOTE]
-> If `google-adk` is not found in PyPI (as it might be a private or preview package), you may need to install it from a local wheel or specific index provided in the course materials.
+## 3. Running Locally
 
-## 2. Running Tests
-
-Once dependencies are installed, you can verify the system by running the tests:
+To start the VERA interface:
 
 ```bash
-python -m unittest discover tests
-```
-
-## 3. Running the Application
-
-To start the VERA interface, use the python executable from the virtual environment and set the PYTHONPATH:
-
-```bash
-PYTHONPATH=. .venv/bin/streamlit run vera/main.py
+streamlit run vera/main.py
 ```
 
 ## 4. Usage
 
-1.  **API Key:** Enter your Google API Key in the sidebar.
-2.  **Model:** Select the Gemini model you wish to use.
-3.  **Investigate:** Paste a text or URL into the main input box and click "Analyze & Verify".
-4.  **Results:** VERA will display the progress and the final report.
+1.  **API Key:** Enter your Google API Key (AI Studio) in the sidebar.
+2.  **Language:** Select "English" or "Polski".
+3.  **Input:** Paste text or a URL (BETA) into the main input box.
+4.  **Analyze:** Click "Analyze & Verify".
+5.  **Results:** VERA will display real-time progress of each agent and generate a final markdown report with a timestamp.
 
-## 5. Architecture Overview
 
--   **`vera/main.py`**: The Streamlit frontend. Handles user session and runs the ADK Runner asynchronously.
--   **`vera/agents.py`**: Defines the 3-Agent system (Coordinator, Researcher, Analyst).
--   **`vera/tools.py`**: Contains the `search_tool` using DuckDuckGo.
+## 5. Key Features
+
+- **Sequential Workflow**: Manual orchestration ensures robust execution.
+- **Multilingual Support**: Full report generation in English and Polish.
+- **Source Verification**: Integration with Google Search and Wikipedia.
+- **Transparency**: Timestamped reports and explicit source citations.
+- **Safety**: Comprehensive disclaimers and error handling.
