@@ -66,10 +66,18 @@ Your task:
 4. Determine if each claim is: True, False, or Unverified
 5. Cite your sources (URLs)
 
+CRITICAL URL HANDLING:
+- Google Search may return temporary redirect URLs (containing "grounding-api-redirect.google.com")
+- These URLs expire quickly and become inaccessible
+- When citing sources, look for the REAL destination URL in the search result metadata
+- If you can identify the actual source website (e.g., "nytimes.com", "bbc.com", "reuters.com"), cite that instead
+- If only a redirect URL is available, cite it as: "Verified via Google Search: [Article Title]" (without the URL)
+- NEVER cite grounding-api-redirect URLs directly - they will not work for users
+
 Output format:
 **Claim 1**: [statement]
 **Verdict**: True/False/Unverified
-**Sources**: [URLs of INDEPENDENT sources]
+**Sources**: [Real URLs or "Verified via Google Search: [Title]"]
 
 Be objective and evidence-based. Focus on facts, not opinions.""",
         
