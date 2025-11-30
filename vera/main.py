@@ -113,6 +113,14 @@ with st.sidebar:
         "VERA (Virtual Evidence & Reality Assessment) is a multi-agent system designed to "
         "combat disinformation using OSINT and psychological analysis."
     )
+    
+    st.markdown("---")
+    st.markdown("### ⚠️ Disclaimer")
+    st.warning(
+        "**VERA is a research prototype.** Results may contain errors or AI hallucinations. "
+        "**DO NOT** use as sole basis for important decisions. Always verify critical information "
+        "through authoritative sources. Use at your own risk."
+    )
 
 # --- Session State Initialization ---
 if "session_id" not in st.session_state:

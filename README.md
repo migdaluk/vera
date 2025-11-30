@@ -10,6 +10,48 @@
 
 ---
 
+## ⚠️ IMPORTANT DISCLAIMER
+
+**VERA is a research prototype and educational tool. It is NOT a substitute for professional fact-checking or critical thinking.**
+
+### Limitations and Warnings
+
+> **🚨 NO WARRANTY**: This software is provided "AS IS" without warranty of any kind, express or implied. The authors and contributors make NO guarantees about accuracy, reliability, or fitness for any particular purpose.
+
+**Critical Limitations:**
+- ❌ **AI Hallucinations**: VERA uses LLMs which can generate false information ("hallucinate")
+- ❌ **Not Authoritative**: Results should NOT be treated as definitive truth
+- ❌ **Requires Verification**: Always verify important claims through multiple independent sources
+- ❌ **No Legal Decisions**: Do NOT use VERA outputs as sole basis for legal, financial, medical, or other critical decisions
+- ❌ **Bias Risk**: AI models may reflect biases present in training data
+- ❌ **Time-Sensitive**: Information may become outdated; always check publication dates
+
+### Recommended Use
+
+✅ **Educational purposes** - Learning about AI and fact-checking  
+✅ **Initial screening** - First-pass analysis before deeper research  
+✅ **Research tool** - Part of a broader fact-checking methodology  
+✅ **Awareness building** - Understanding manipulation techniques  
+
+❌ **NOT for**: Legal evidence, medical advice, financial decisions, or any high-stakes determinations
+
+### Liability Disclaimer
+
+**BY USING THIS SOFTWARE, YOU ACKNOWLEDGE:**
+1. VERA is an experimental AI system with inherent limitations
+2. You will NOT rely solely on VERA's outputs for important decisions
+3. You will verify all critical information through authoritative sources
+4. The authors bear NO responsibility for decisions made based on VERA's analysis
+5. You use this software entirely at your own risk
+
+**For professional fact-checking, consult:**
+- Established fact-checking organizations (Snopes, PolitiFact, FactCheck.org)
+- Subject matter experts
+- Primary sources and official documentation
+- Multiple independent verification sources
+
+---
+
 ## 📋 Table of Contents
 
 - [Problem Statement](#-problem-statement)
