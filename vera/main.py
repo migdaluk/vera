@@ -232,7 +232,7 @@ async def run_investigation(text: str, key: str, lang: str):
         ("Analyst", get_analyst_agent()),
         ("Critic", get_critic_agent()),
         ("Scoring", get_scoring_agent()),
-        ("Reporter", get_reporter_agent())
+        ("Reporter", get_reporter_agent(language=lang))
     ]
     
     session_service = InMemorySessionService()
