@@ -469,8 +469,7 @@ ls -la logs/
 
 
 **Supported URL types:**
-- ✅ News articles (BBC, CNN, RIA.ru, Gazeta.pl)
-- ✅ Wikipedia pages
+- ✅ News articles
 - ✅ Blogs and static websites
 - ⚠️ **BETA limitations**: May not work with JavaScript-heavy sites, paywalls, or sites blocking scrapers
 - 💡 **Tip**: If URL extraction fails, copy the article text manually
@@ -799,8 +798,7 @@ This project is licensed under the **CC-BY-SA 4.0 License** - see the [LICENSE](
 ## 📞 Support
 
 - **Documentation**: [docs/](docs/)
-- **Issues**: [GitHub Issues](https://github.com/your-username/vera/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-username/vera/discussions)
+
 
 ---
 
@@ -811,7 +809,5 @@ This project is licensed under the **CC-BY-SA 4.0 License** - see the [LICENSE](
 <div align="center">
 
 **Made with ❤️ using Google ADK**
-
-[⭐ Star this repo](https://github.com/migdaluk/vera) | [🐛 Report Bug](https://github.com/migdaluk/vera/issues) | [💡 Request Feature](https://github.com/migdaluk/vera/issues)
 
 </div>
