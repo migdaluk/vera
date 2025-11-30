@@ -159,29 +159,24 @@ def get_workflow_html(active_agent: str = "Researcher") -> str:
         """
     
     return f"""
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 15px 0;">
-        <div style="{agent_style('Coordinator')}">
-            {agents['Coordinator']['icon']} {agents['Coordinator']['label']}
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 15px 0;">
+        <div style="{agent_style('Researcher')}">
+            {agents['Researcher']['icon']} {agents['Researcher']['label']}
         </div>
-        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-            <div style="{agent_style('Researcher')}">
-                {agents['Researcher']['icon']} {agents['Researcher']['label']}
-            </div>
-            <div style="{agent_style('Librarian')}">
-                {agents['Librarian']['icon']} {agents['Librarian']['label']}
-            </div>
-            <div style="{agent_style('Analyst')}">
-                {agents['Analyst']['icon']} {agents['Analyst']['label']}
-            </div>
-            <div style="{agent_style('Critic')}">
-                {agents['Critic']['icon']} {agents['Critic']['label']}
-            </div>
-            <div style="{agent_style('Scoring')}">
-                {agents['Scoring']['icon']} {agents['Scoring']['label']}
-            </div>
-            <div style="{agent_style('Reporter')}">
-                {agents['Reporter']['icon']} {agents['Reporter']['label']}
-            </div>
+        <div style="{agent_style('Librarian')}">
+            {agents['Librarian']['icon']} {agents['Librarian']['label']}
+        </div>
+        <div style="{agent_style('Analyst')}">
+            {agents['Analyst']['icon']} {agents['Analyst']['label']}
+        </div>
+        <div style="{agent_style('Critic')}">
+            {agents['Critic']['icon']} {agents['Critic']['label']}
+        </div>
+        <div style="{agent_style('Scoring')}">
+            {agents['Scoring']['icon']} {agents['Scoring']['label']}
+        </div>
+        <div style="{agent_style('Reporter')}">
+            {agents['Reporter']['icon']} {agents['Reporter']['label']}
         </div>
     </div>
     """
