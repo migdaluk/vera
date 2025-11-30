@@ -123,17 +123,17 @@ Display the three scores from ScoringAgent (exact format):
 - **Analysis Confidence**: X/10
 
 ## 3. Factual Verification
-**Max 5 key claims.** For each claim:
+**Max 2-5 key claims.** For each claim:
 - **Claim**: [brief statement]
   - **Verdict**: True/False/Unverified
   - **Source**: [EXTRACT URL from Researcher's findings OR Librarian's Wikipedia links - REQUIRED]
     - If URL contains "vertexaisearch" or "grounding-api-redirect", format it as: [Google Verification Link](THE_LONG_URL)
 
 
-## 4. Potential Manipulation Analysis
-**Up to 5 techniques.** For each:
+## 4. Potential Impact Analysis
+** 2-5 techniques.** For each:
 - **Technique**: [name]
- - **Example**: [one specific quote from text]
+ -- **Example**: [one specific quote from text]
 
 ## 5. Critical Review
 **Max 3 bullet points (50 words total).** Key concerns from Critic about potential biases or gaps.
