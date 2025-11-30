@@ -198,38 +198,7 @@ Markdown Report (displayed to user)
 
 ### Agent Synergy
 
-```mermaid
-graph TB
-    Input[User Input] --> R[🔍 Researcher<br/>Fact Verification]
-    Input --> L[📚 Librarian<br/>Context & Definitions]
-    
-    R --> A[🧐 Analyst<br/>Manipulation Detection]
-    L --> A
-    
-    R --> C[🛑 Critic<br/>Bias & Validation]
-    A --> C
-    
-    R --> S[📊 Scoring<br/>Quantitative Assessment]
-    L --> S
-    A --> S
-    C --> S
-    
-    S --> Rep[📝 Reporter<br/>Final Synthesis]
-    
-    C -.validates.-> R
-    C -.validates.-> A
-    L -.enriches.-> R
-    
-    Rep --> Output[Comprehensive Report]
-    
-    style R fill:#e1f5ff
-    style L fill:#fff4e1
-    style A fill:#ffe1f5
-    style C fill:#ffe1e1
-    style S fill:#e1ffe1
-    style Rep fill:#f5e1ff
-    style Output fill:#d4edda
-```
+![VERA Agent Synergy Diagram](docs/images/agent_synergy.png)
 
 **Key Synergies:**
 - 📚 **Librarian enriches Researcher**: Historical context validates current claims
