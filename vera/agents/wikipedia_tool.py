@@ -49,9 +49,9 @@ def search_wikipedia(query: str) -> str:
         # This may raise DisambiguationError if query is ambiguous
         page = wikipedia.page(query, auto_suggest=True)
         
-        # Get summary with specified number of sentences
+        # Get summary with 3 sentences
         # Limiting sentences prevents overwhelming the LLM with too much text
-        summary = wikipedia.summary(query, sentences=sentences, auto_suggest=True)
+        summary = wikipedia.summary(query, sentences=3, auto_suggest=True)
         
         # Return formatted result with title and URL for citation
         return f"**{page.title}**\n\n{summary}\n\nSource: {page.url}"
