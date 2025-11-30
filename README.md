@@ -695,15 +695,7 @@ Evolution of agent count:
    - **Limitations**: Tool conflicts in single agent, SequentialAgent wrapper issues
    - **Workaround**: Manual orchestration provides full control
 
-### Future Enhancements
 
-If continuing development, priority would be:
-1. **Multi-language support** (Spanish, French, German)
-2. **Image analysis** (OCR + visual manipulation detection)
-3. **API endpoint** for programmatic access
-4. **Browser extension** for on-the-fly fact-checking
-5. **Integration with fact-checking databases** (Snopes, PolitiFact)
-6. **Improved URL extraction** (Selenium for JavaScript-heavy sites)
 
 ---
 
@@ -722,7 +714,7 @@ This project applies concepts learned in the ADK course:
 
 ### Open Source
 
-VERA is **open source** under the MIT License. Contributions are welcome!
+VERA is **open source** under the [CC-BY-SA 4.0 License](https://creativecommons.org/licenses/by-sa/4.0/). This project was created for the Google ADK Capstone Competition.
 
 ### Author
 
@@ -775,14 +767,7 @@ This project is licensed under the **CC-BY-SA 4.0 License** - see the [LICENSE](
 
 ---
 
-## 🔮 Future Enhancements
 
-- [ ] Multi-language support (Spanish, French, German)
-- [ ] Image analysis (OCR + visual manipulation detection)
-- [ ] Real-time monitoring dashboard
-- [ ] API endpoint for programmatic access
-- [ ] Browser extension for on-the-fly fact-checking
-- [ ] Integration with fact-checking databases (Snopes, PolitiFact)
 
 ---
 
