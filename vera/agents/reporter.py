@@ -58,10 +58,14 @@ MUSISZ napisać CAŁY raport w języku POLSKIM. To oznacza:
 2. WSZYSTKIE podsekcje w POLSKIM:
    - "**Twierdzenie**:" (NIE "**Claim**:")
    - "**Werdykt**:" (NIE "**Verdict**:")
-   - "**Źródło**:" (NIE "**Source**:" - TUTAJ WKLEJ URL ZE ZNALEZISK RESEARCHERA LUB BIBLIOTEKARZA)
-     - Jeśli URL zawiera "vertexaisearch" lub "grounding-api-redirect", sformatuj go jako: [Link Weryfikacyjny Google](DŁUGI_URL)
+   - "**Źródło**:" (NIE "**Source**:")
+     🚨 KRYTYCZNE: Przed dodaniem źródła, sprawdź czy NIE zawiera:
+       ❌ "grounding-api-redirect.google.com" → USUŃ URL, zostaw tylko opis
+       ❌ "vertexaisearch.cloud.google.com" → USUŃ URL, zostaw tylko opis
+       ✅ Wikipedia URLs są OK (stabilne linki)
+       ✅ Format: "BBC News: Tytuł artykułu" (BEZ URL jeśli był redirect)
    - "**Technika**:" (NIE "**Technique**:")
-    - "**Przykład**:" (NIE "**Example**:")
+   - "**Przykład**:" (NIE "**Example**:")
 
 3. CAŁY tekst w POLSKIM:
    - Wszystkie zdania
@@ -126,8 +130,45 @@ Display the three scores from ScoringAgent (exact format):
 **Max 2-5 key claims.** For each claim:
 - **Claim**: [brief statement]
   - **Verdict**: True/False/Unverified
-  - **Source**: [EXTRACT URL from Researcher's findings OR Librarian's Wikipedia links - REQUIRED]
-    - If URL contains "vertexaisearch" or "grounding-api-redirect", format it as: [Google Verification Link](THE_LONG_URL)
+  - **Source**: [EXTRACT citation from Researcher's findings OR Librarian's Wikipedia links]
+
+🚨 CRITICAL URL SAFETY NET 🚨
+
+Before including ANY source citation, you MUST validate it:
+
+STEP 1: CHECK for broken redirect URLs
+  ❌ If source contains "grounding-api-redirect.google.com" → REMOVE the URL
+  ❌ If source contains "vertexaisearch.cloud.google.com" → REMOVE the URL
+  ❌ If source contains "redirect" in domain → REMOVE the URL
+
+STEP 2: CLEAN the citation
+  ✅ If you removed a URL, keep only the descriptive text:
+     - "BBC News: [Article Title]" (NO URL)
+     - "Reuters: [Description]" (NO URL)
+     - "Verified via Google Search: [Title]" (NO URL)
+  
+  ✅ If the source is from Wikipedia (Librarian), keep the full Wikipedia URL - these are stable
+
+STEP 3: FORMAT properly
+  - **Source**: BBC News: Article about climate change
+  - **Source**: Verified via Google Search: WHO pandemic report
+  - **Source**: https://en.wikipedia.org/wiki/Topic_Name (Wikipedia URLs are OK)
+
+EXAMPLES OF CORRECT CLEANING:
+
+❌ BEFORE (BAD): 
+  - **Source**: [Article](https://vertexaisearch.cloud.google.com/grounding-api-redirect/...)
+
+✅ AFTER (GOOD):
+  - **Source**: BBC News: Climate change report from December 2024
+
+❌ BEFORE (BAD):
+  - **Source**: https://grounding-api-redirect.google.com/AYHp...
+
+✅ AFTER (GOOD):
+  - **Source**: Verified via Google Search: Economic analysis report
+
+REMEMBER: It's BETTER to have NO URL than a BROKEN URL. Credibility depends on working sources!
 
 
 ## 4. Potential Impact Analysis

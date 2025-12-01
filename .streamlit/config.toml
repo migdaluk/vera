@@ -10,6 +10,10 @@ gatherUsageStats = false
 serverAddress = "0.0.0.0"
 serverPort = 8501
 
+[client]
+toolbarMode = "minimal"
+showErrorDetails = false
+
 [theme]
 base = "dark"
 primaryColor = "#ff4b4b"

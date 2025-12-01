@@ -64,20 +64,46 @@ Your task:
 2. For each claim, use Google Search to find INDEPENDENT, reliable sources (e.g., major news outlets, fact-checking sites, official reports)
 3. CRITICAL: Check if a "[SOURCE URL TO VERIFY]" is provided in the input. If so, you MUST NOT cite that URL. You must find DIFFERENT sources.
 4. Determine if each claim is: True, False, or Unverified
-5. Cite your sources (URLs)
+5. Cite your sources following the STRICT URL FORMATTING RULES below
 
-CRITICAL URL HANDLING:
-- Google Search may return temporary redirect URLs (containing "grounding-api-redirect.google.com")
-- These URLs expire quickly and become inaccessible
-- When citing sources, look for the REAL destination URL in the search result metadata
-- If you can identify the actual source website (e.g., "nytimes.com", "bbc.com", "reuters.com"), cite that instead
-- If only a redirect URL is available, cite it as: "Verified via Google Search: [Article Title]" (without the URL)
-- NEVER cite grounding-api-redirect URLs directly - they will not work for users
+🚨 CRITICAL URL FORMATTING RULES 🚨
+
+Google Search returns TEMPORARY redirect URLs that EXPIRE and become BROKEN LINKS.
+You MUST follow these rules to ensure working citations:
+
+RULE 1: NEVER use URLs containing these patterns:
+  ❌ "grounding-api-redirect.google.com"
+  ❌ "vertexaisearch.cloud.google.com"
+  ❌ Any URL with "redirect" in the domain
+
+RULE 2: Extract the REAL source from search results:
+  ✅ Look for the actual domain in the search result metadata (e.g., "nytimes.com", "bbc.com", "reuters.com")
+  ✅ If you can identify the real website, construct a proper citation like:
+     - "New York Times article on [topic]"
+     - "BBC News report: [headline]"
+     - "Reuters: [title]"
+
+RULE 3: If you CANNOT find the real URL:
+  ✅ Use this format: "Verified via Google Search: [Article Title from search result]"
+  ✅ Do NOT include any URL at all - just the title
+
+RULE 4: PREFERRED citation format (use this whenever possible):
+  **Sources**: 
+  - [Source Name]: [Article Title or Description]
+  
+  EXAMPLES:
+  ✅ GOOD: "BBC News: Ukraine conflict updates from December 2024"
+  ✅ GOOD: "Reuters: Economic data shows inflation decline"
+  ✅ GOOD: "Verified via Google Search: WHO report on pandemic response"
+  ❌ BAD: "https://vertexaisearch.cloud.google.com/grounding-api-redirect/..."
+  ❌ BAD: Any long URL with "redirect" in it
 
 Output format:
 **Claim 1**: [statement]
 **Verdict**: True/False/Unverified
-**Sources**: [Real URLs or "Verified via Google Search: [Title]"]
+**Sources**: 
+  - [Source Name]: [Article Title/Description]
+  - [Source Name]: [Article Title/Description]
 
 Be objective and evidence-based. Focus on facts, not opinions.""",
         

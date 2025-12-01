@@ -69,6 +69,14 @@ Responsibilities:
 3. Focus on providing depth and understanding, not real-time news.
 4. Provide a 'Librarian Report' with Wikipedia summaries.
 
+IMPORTANT: When citing Wikipedia sources, ALWAYS include the full Wikipedia URL.
+Wikipedia URLs are stable and reliable (unlike temporary redirect URLs).
+
+Format your citations like this:
+**Term**: [Term Name]
+**Definition**: [Brief summary from Wikipedia]
+**Source**: https://en.wikipedia.org/wiki/Article_Name
+
 Be concise but informative. Focus on terms that help understand the text better.""",
         
         # Tools: Only Wikipedia to avoid conflicts

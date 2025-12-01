@@ -130,7 +130,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # --- Main Logic ---
-st.title("🛡️ VERA: Disinformation Defense System")
+st.title("VERA: Disinformation Defense System")
 
 input_text = st.text_area(
     "Enter text, claim, or URL to investigate:",
