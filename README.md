@@ -525,28 +525,111 @@ cat logs/vera_*.log | jq '.message'
 
 ### Google Cloud Run (Recommended)
 
-```bash
-# Quick deploy
-./deploy.sh your-project-id
+VERA is production-ready and can be deployed to Google Cloud Run in minutes.
 
-# Or manual deployment
-gcloud builds submit --tag gcr.io/PROJECT_ID/vera-app
-gcloud run deploy vera --image gcr.io/PROJECT_ID/vera-app
+**Live Demo:** https://vera-272147238752.europe-central2.run.app
+
+#### Prerequisites
+
+- Google Cloud Project with billing enabled
+- [Google Cloud SDK](https://cloud.google.com/sdk/docs/install) installed
+- APIs enabled:
+  - Cloud Build API
+  - Cloud Run API
+  - Container Registry API
+
+#### Deployment Steps
+
+**1. Configure Google Cloud:**
+
+```bash
+# Set your project ID
+gcloud config set project YOUR_PROJECT_ID
+
+# Enable required APIs
+gcloud services enable cloudbuild.googleapis.com run.googleapis.com containerregistry.googleapis.com
 ```
 
-See [DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed instructions.
+**2. Deploy using Cloud Build:**
+
+```bash
+# Clone repository (if not already)
+git clone https://github.com/migdaluk/vera.git
+cd vera
+
+# Deploy with Cloud Build (builds Docker image and deploys to Cloud Run)
+gcloud builds submit --config cloudbuild.yaml .
+```
+
+This command will:
+- Build the Docker container image
+- Push it to Google Container Registry
+- Deploy to Cloud Run in `europe-central2` region
+- Configure 2Gi memory, 2 CPUs, 15-minute timeout
+- Enable auto-scaling (0-10 instances)
+
+**3. Set public access:**
+
+```bash
+# Allow unauthenticated access (public app)
+gcloud run services add-iam-policy-binding vera \
+  --region=europe-central2 \
+  --member="allUsers" \
+  --role="roles/run.invoker"
+```
+
+**4. Get your service URL:**
+
+```bash
+gcloud run services describe vera \
+  --region=europe-central2 \
+  --format="value(status.url)"
+```
+
+Your VERA instance is now live! Users can access it and provide their own Google API keys via the UI.
+
+#### Configuration
+
+The deployment is configured in `cloudbuild.yaml`:
+- **Region:** `europe-central2` (Warsaw, Poland)
+- **Memory:** 2Gi
+- **CPU:** 2 cores
+- **Timeout:** 900 seconds (15 minutes)
+- **Scaling:** 0-10 instances (scale to zero for cost savings)
+
+**Note:** VERA does not require server-side API keys. Users provide their own Google AI Studio API keys through the Streamlit interface.
+
+#### Updating Deployment
+
+To deploy updates:
+
+```bash
+# Pull latest changes
+git pull origin main
+
+# Redeploy
+gcloud builds submit --config cloudbuild.yaml .
+```
+
+Cloud Run will automatically update the service with zero downtime.
+
+---
 
 ### Local Docker
+
+For local testing with Docker:
 
 ```bash
 # Build image
 docker build -t vera-app .
 
 # Run container
-docker run -p 8080:8080 \
-  -e GOOGLE_API_KEY="your-key" \
-  vera-app
+docker run -p 8080:8080 vera-app
 ```
+
+Open browser at `http://localhost:8080`
+
+**Note:** When running locally via Docker, users still provide API keys through the UI (no environment variables needed).
 
 ---
 
