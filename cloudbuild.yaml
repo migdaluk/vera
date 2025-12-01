@@ -21,8 +21,6 @@ steps:
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
-      - '--set-secrets'
-      - 'GOOGLE_API_KEY=google-api-key:latest'
       - '--memory'
       - '2Gi'
       - '--cpu'
