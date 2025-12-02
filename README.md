@@ -527,7 +527,7 @@ cat logs/vera_*.log | jq '.message'
 
 VERA is production-ready and can be deployed to Google Cloud Run in minutes.
 
-**Live Demo:** https://vera-272147238752.europe-central2.run.app
+**🌐 Live Demo:** [https://verainfo.org](https://verainfo.org)
 
 #### Prerequisites
 
