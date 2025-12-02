@@ -63,3 +63,6 @@ htmlcov/
 
 # Internal documentation (not for submission)
 docs/internal/
+
+# Google Cloud SDK
+gcloud_CLI/

@@ -97,7 +97,7 @@ with st.sidebar:
     api_key = st.text_input(
         "Google API Key",
         type="password",
-        help="Enter your Google API Key (AI Studio). It will not be stored permanently."
+        help="Your API key is kept only in your browser's memory during this session. It is never stored permanently, logged, or sent to our servers. You'll need to re-enter it after closing the browser."
     )
     
     language = st.selectbox(
