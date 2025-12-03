@@ -829,7 +829,7 @@ Evolution of agent count:
 
 ## 🎓 About This Project
 
-**VERA** was developed as a **Capstone Project** for the [Google Agents Development Kit (ADK) Course](https://developers.google.com/adk).
+**VERA** was developed as a **Capstone Project** for the Google Agents Development Kit (ADK) Course.
 
 ### Course Context
 
