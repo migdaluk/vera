@@ -821,6 +821,12 @@ Evolution of agent count:
 
 ---
 
+## 🤝 Contributing
+
+**Contribution Note:** This repository is a snapshot submission for the Google ADK Capstone Competition. We are currently **NOT accepting Pull Requests** or code contributions to preserve the integrity of the submission and copyright ownership. Feel free to fork the project for your own experiments!
+
+---
+
 ## 🎓 About This Project
 
 **VERA** was developed as a **Capstone Project** for the [Google Agents Development Kit (ADK) Course](https://developers.google.com/adk).
